@@ -1,0 +1,159 @@
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Penting untuk menyembunyikan gambar yang keluar batas */
+  position: relative; /* Penting agar posisi absolute anak relatif terhadap body */
+}
+
+.container {
+  text-align: center;
+  z-index: 10; /* Pastikan teks di atas gambar */
+  position: relative; /* Agar z-index bekerja */
+}
+
+.typing-text {
+  color: #fff;
+  font-size: 3em;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid orange; /* Efek kursor ketik */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Animasi mengetik */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Animasi kursor berkedip */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+/* Gaya untuk foto-foto lucu */
+.cute-photo {
+  position: absolute;
+  border-radius: 50%; /* Membuat gambar menjadi bulat */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Efek bayangan */
+  object-fit: cover; /* Memastikan gambar mengisi area tanpa distorsi */
+  animation: float 5s ease-in-out infinite alternate; /* Animasi melayang */
+  z-index: 5; /* Di bawah teks, tapi di atas background */
+}
+
+/* Posisi spesifik untuk setiap foto */
+.photo-1 {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  width: 200px;
+  height: 400px;
+  object-position: cover;
+}
+
+.photo-2 {
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 1.5s;
+  width: 200px;
+  height: 400px;
+  object-position: cover;
+}
+
+.photo-3 {
+  top: 2%;
+  right: 2%;
+  animation-delay: 3s;
+  width: 200px;
+  height: 400px;
+  object-position: cover;
+}
+
+.photo-4 {
+  bottom: 10%;
+  left: 18%;
+  animation-delay: 4.5s;
+  width: 200px;
+  height: 400px;
+  object-position: cover;
+}
+
+/* Animasi melayang untuk foto */
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  } /* Bergerak naik turun 15px */
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 600px) {
+  /* Aturan CSS untuk layar mobile */
+
+  .typing-text {
+    font-size: 1.5em; /* Mengurangi ukuran font agar muat di layar kecil */
+    white-space: normal; /* Memungkinkan teks untuk membungkus ke baris baru */
+    text-align: center;
+  }
+
+  .cute-photo {
+    width: 80px; /* Mengurangi lebar gambar agar tidak terlalu besar */
+    height: 80px; /* Mengurangi tinggi gambar */
+    /* Menghilangkan efek bayangan atau membuatnya lebih kecil jika diperlukan */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Mengatur ulang posisi foto agar lebih rapi di layar mobile */
+  .photo-1 {
+    top: 70%;
+    left: 70%;
+    transform: translate(0, 0); /* Menghilangkan animasi melayang sementara */
+  }
+
+  .photo-2 {
+    top: 15%;
+    right: 8%;
+    transform: translate(0, 0);
+  }
+
+  .photo-3 {
+    top: 10%;
+    left: 20%;
+    transform: translate(0, 0);
+  }
+
+  .photo-4 {
+    bottom: 15%;
+    right: 5%;
+    transform: translate(0, 0);
+  }
+
+  /* Anda juga bisa menonaktifkan animasi melayang untuk menghemat kinerja di mobile */
+  @keyframes float {
+    from {
+      transform: none;
+    }
+    to {
+      transform: none;
+    }
+  }
+}
